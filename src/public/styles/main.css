@@ -1,0 +1,116 @@
+main {
+    padding-top: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+
+    min-height: 80vh;
+}
+
+.container {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+
+    padding: 15px;
+}
+
+.container button {
+    cursor: pointer;
+
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    color: #17882c;
+    background-color: white;
+
+    border-radius: 15px;
+    border: 2px solid #17882c;
+    
+    outline: none;
+    
+    transition: .5s;
+}
+
+.container button:hover {
+    background-color: #17882c;
+    color: white;
+}
+
+.container .row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.container .no-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.container .no-content h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.container .no-content p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.container .box-picture {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.container .box-picture img {
+    width: 50%;
+    border-radius: 15px;
+    padding-right: 5px;
+}
+
+.container .box-picture .box-picture-text {
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container .box-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.container .box-icons .icon {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.container .box-icons .icon a {
+    text-decoration: none;
+    color: black;
+}
+
+.container .box-icons .icon img {
+    width: 75px;
+    height: 75px;
+
+    cursor: pointer;
+
+    margin-bottom: 15px;
+}

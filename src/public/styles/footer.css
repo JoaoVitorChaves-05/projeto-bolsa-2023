@@ -1,0 +1,29 @@
+footer {
+    display: flex;
+    flex-direction: row;
+
+    align-self: center;
+    justify-content: space-around;
+
+    width: 80%;
+}
+
+footer .footer-item {
+    flex: 1;
+    text-align: center;
+}
+
+footer .footer-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+footer .footer-item p {
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        flex-direction: column;
+    }
+}

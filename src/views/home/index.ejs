@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caronas - IFSP</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+</head>
+<body>
+    <header>
+        <h1>Caronas - IFSP</h1>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/signUp">Cadastro</a>
+            <a href="/login">Login</a>
+            <a href="/about">Sobre</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <button onclick="addPost()">Adicionar postagem</button>
+            <% if (data.length) { %>
+                <div class="row">
+                    <% for (let i = 0; i < data.length; i++) { %>
+                        <div class="row-item">
+                            <h2><%= data[i].autor%></h2>
+                            <p>Nº da matrícula: <%= data[i].n_matricula%></p>
+                            <p>Origem: <%= data[i].origem%></p>
+                            <p>Destino: <%= data[i].destino%></p>
+                            <p>Horário de saída: <%= data[i].hora_saida%></p>
+                            <p>Contato: <a href="https://wa.me/<%= data[i].contato %>"><%= data[i].contato%></a></p>
+                            <p><%= data[i].placa_carro%></p>
+                            <p><strong>AVISO: Verifique a placa do carro antes de entrar</strong></p>
+                        </div>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="no-content">
+                    <div class="no-content-item">
+                        <h2>Ninguém postou nada ainda!</h2>
+                        <p>Seja o primeiro, basta ter uma conta aprovada para efetuar uma postagem.</p>
+                    </div>
+                </div>
+            <% } %>    
+            <footer>
+                <div class="footer-item">
+                    <h3>Apoiadores</h3>
+                    <p>IFSP - Jacareí</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Desenvolvedor</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Idealização</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>

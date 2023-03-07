@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-around;
+
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+
+    background-color: #195128;
+    background-image: radial-gradient(ellipse at center,#17882c 1%,#00510f 100%);
+    color: white;
+
+    height: 20vh;
+}
+
+header h1 {
+    font-size: 3rem;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 30%;
+}
+
+header nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+header nav a:after {
+    content: '';
+    display: block;
+
+    width: 0%;
+    border: 1px solid rgba(255, 255, 255, 0);
+    opacity: 1;
+    transition: .5s;
+}
+
+header nav a:hover::after {
+    border: 1px solid white;
+    width: 100%;
+}
