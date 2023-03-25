@@ -7,7 +7,7 @@ router.get('/login', AuthController.login)
 router.post('/login', Auth.createSession, AuthController.Homepage)
 
 router.get('/signUp', AuthController.signUp)
-router.post('/signUp', AuthController.Loginpage)
+router.post('/signUp', AuthController.createUser)
 
 router.delete('/login', Auth.deleteSession, AuthController.Homepage)
 

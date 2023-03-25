@@ -17,6 +17,7 @@ class Database {
     }
 
     async createTables() {
+
         this.models.Users = this.connection.define('Users', {
             user_id: {
                 type: DataTypes.INTEGER,
@@ -39,11 +40,15 @@ class Database {
                 type: DataTypes.STRING,
                 allowNull: false
             },
+            /*
             userType: {
                 type: DataTypes.STRING,
                 allowNull: false
             }
+            */
         })
+
+        await this.models.Users.sync()
 
         this.models.Posts = this.connection.define('Posts', {
             post_id: {
@@ -53,7 +58,11 @@ class Database {
             },
             user_author_id: {
                 type: DataTypes.INTEGER,
-                allowNull: false
+                allowNull: false,
+                references: {
+                    model: this.models.Users,
+                    key: 'user_id'
+                }
             },
             origin: {
                 type: DataTypes.STRING,
@@ -76,8 +85,8 @@ class Database {
                 allowNull: false
             }
         })
-
-        await this.connection.sync()
+          
+        await this.models.Posts.sync()
     }
 }
 
