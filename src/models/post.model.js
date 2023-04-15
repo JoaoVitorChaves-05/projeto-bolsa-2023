@@ -15,7 +15,7 @@ class PostModel {
             attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'createdAt', 'updatedAt'],
             include: {
                 model: Users,
-                attributes: ['name'],
+                attributes: ['name', 'n_matricula'],
                 required: true,
             },
         });

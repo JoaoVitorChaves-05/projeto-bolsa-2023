@@ -21,11 +21,26 @@ main {
     padding: 15px;
 }
 
+.container .row {
+    width: 60%;
+}
+
+.container .row .row-item {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+
+    padding: 15px;
+    background-color: rgb(221, 221, 221);
+
+    border-radius: 15px;
+}
+
 .container button {
     cursor: pointer;
 
     padding: 1.2rem;
-    font-size: 1.2rem;
+    font-size: 120%;
     color: #17882c;
     background-color: white;
 

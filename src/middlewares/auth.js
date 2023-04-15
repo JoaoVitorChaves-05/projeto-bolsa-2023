@@ -7,15 +7,31 @@ dotenv.config()
 class Auth {
 
     constructor() {
-        this.sessions = []
+        this.sessions = new Array()
+        this.createSession = this.createSession.bind(this)
+        this.authenticate = this.authenticate.bind(this)
     }
     
     authenticate(req, res, next) {
         if (req.session.token) {
+            console.log('has session token: ', req.session.token)
             const token = req.session.token
-            this.sessions.forEach(session => session.token == token ? res.locals.auth = true : res.locals.auth = false)
+            const result = this.sessions.find((session) => session.token == token)
+
+            if (result) {
+                res.locals.auth = true
+                res.locals.user_id = result.user_id
+            }
+            else
+                res.locals.auth = false
+
+            next()
+            return
         }
         console.log('next')
+
+        res.locals.auth = false
+
         next()
     }
 
@@ -35,26 +51,31 @@ class Auth {
     }
 
     async createSession(req, res, next) {
-        const {username, password} = req.body
+        const {email, password} = req.body
+        console.log(req.body)
 
-        const user = database.models.Users.findAll({ where: {
-            name: username
+        const result = await database.models.Users.findOne({ where: {
+            email: email
         } })
 
-        bcrypt.compare(password, user.password_hash, (err, success) => {
-            
-            if (success) {
-                const token = jwt.sign({ id: user.user_id }, process.env.SECRET)
-                //this.sessions.push(req.session)
-                //this.sessions[this.sessions.length - 1].token = token
-                req.session.token = token
-                this.sessions.push({user_id: user.user_id, token: token})
-                next()
-            } else {
-                res.redirect('/login')
-            }
-            
-        })
+        const user = {...result.dataValues}
+
+        console.log(user)
+
+        const match = bcrypt.compareSync(password, user.password_hash)
+
+        if (match) {
+            const token = jwt.sign({ id: user.user_id }, process.env.SECRET_KEY)
+            req.session.token = token
+            console.log(token)
+            console.log(this.sessions)
+            this.sessions.push({user_id: user.user_id, token: token})
+            next()
+            return
+        } else {
+            res.status(200).render('auth/login', { message: "Usuário e/ou senha estão incorretos"})
+            return
+        }
     }
 
     deleteSession(req, res, next) {

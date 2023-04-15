@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Caronas IFSP</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/profile.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+</head>
+<body>
+    <header>
+        <h1>Caronas - IFSP</h1>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/profile">Perfil</a>
+            <a href="/about">Sobre</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Dados pessoais</h2>
+            <form id="form-profile" action="/user?_method=PUT" method="post">
+                <input placeholder="Nome" type="text" name="name">
+                <input placeholder="Nº da matrícula" type="text" name="n_matricula">
+                <input placeholder="E-mail" type="email" name="email">
+                <input placeholder="Nova senha" type="password" name="password">
+                <div class="options">
+                    <button type="submit">Atualizar dados</button>
+                    <button type="button">Sair da conta</button>
+                    <button type="button">Excluir conta</button>
+                </div>
+            </form>
+            <h2>Postagens</h2>
+            <div class="row">
+                <div class="row-item">
+                    <div id="map"></div>
+                    <div class="info">
+                        <p>Nome: </p>
+                        <p>Nº da matrícula: </p>
+                        <p>Origem: </p>
+                        <p>Destino: </p>
+                        <p>Horário de saída: </p>
+                        <p>Contato: </p>
+                        <p>Placa do carro: </p>
+                    </div>
+                    <div class="options">
+                        <button type="button">Editar postagem</button>
+                        <button type="button">Exluir postagem</button>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer-item">
+                    <h3>Apoiadores</h3>
+                    <p>IFSP - Jacareí</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Desenvolvedor</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Idealização</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

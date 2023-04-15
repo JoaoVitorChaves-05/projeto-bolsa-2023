@@ -22,10 +22,15 @@
         </nav>
     </header>
     <main>
+        <% if (message) { %>
+            <div class="error">
+                <p><%= message %></p>
+            </div>
+        <% } %>
         <div class="container">
             <h2 class="form-title">Quem é você?</h2>
             <p class="form-subtitle">Efetue o login abaixo para que possa fazer uma postagem</p>
-            <form action="/login">
+            <form action="/login" method="post">
                 <input type="email" name="email" placeholder="E-mail" />
                 <input type="password" name="password" placeholder="Senha">
                 <button type="submit">Entrar</button>

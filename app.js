@@ -1,7 +1,6 @@
 import express from 'express'
 import session from 'express-session'
-import flash from 'connect-flash'
-import cookieParser from 'cookie-parser'
+import methodOverride from 'method-override'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -23,13 +22,15 @@ class App {
     middleware() {
         this.app.use(session({
             secret: process.env.SECRET_KEY,
-            resave: true,
-            saveUninitialized: true
+            resave: false,
+            saveUninitialized: true,
+            cookie: {secure: false}
         }))
         //this.app.use(flash())
-        this.app.use(cookieParser())
+        //this.app.use(cookieParser())
         this.app.use(express.urlencoded({ extended: false}))
         this.app.use(express.json())
+        this.app.use(methodOverride('_method'))
     }
 
     routes() {

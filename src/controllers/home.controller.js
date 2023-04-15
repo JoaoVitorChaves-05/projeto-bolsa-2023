@@ -4,7 +4,9 @@ class HomeController {
     async index(req, res) {
         const data = await PostModel.getPosts()
         console.log(data)
-        res.status(200).render('home/index', {data})
+
+        const authStatus = res.locals.auth
+        res.status(200).render('home/index', {data: [...data], hasSession: authStatus})
     }
 }
 

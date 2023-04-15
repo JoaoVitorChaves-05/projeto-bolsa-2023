@@ -4,11 +4,22 @@ import bcryptjs from "bcryptjs"
 class AuthController {
 
     login(req, res) {
-        res.status(200).render('auth/login')
+        res.status(200).render('auth/login', { message: null})
     }
 
     signUp(req, res) {
         res.status(200).render('auth/signUp')
+    }
+
+    async profile(req, res) {
+        const user_id = res.locals.user_id
+
+        const result = await database.models.Users.findOne({ where: { user_id: user_id } })
+
+        const user = {...result.dataValues}
+        user.password_hash = null
+
+        res.status(200).render('auth/profile', { user: user })
     }
 
     async createUser(req, res) {
@@ -16,7 +27,7 @@ class AuthController {
         const { name, email, password, n_matricula } = req.body
     
         if (!name.trim() || !email.trim() || !password.trim() || !n_matricula.trim()) {
-            res.status(200).render('auth/signUp')
+            res.status(200).render('auth/signUp', { message: 'Ops! Ocorreu um erro. Tente novamente mais tarde.' })
             return
         }
     
@@ -30,20 +41,20 @@ class AuthController {
                 n_matricula: n_matricula
             })
     
-            res.status(200).render('auth/login', { message: 'Usuário criado com sucesso! Efetue login para continuar' })
+            res.status(200).render('auth/login', { message: 'Usuário criado com sucesso! Efetue login para continuar.' })
         } catch (err) {
             console.log(err)
             res.status(500).send('Ocorreu um erro ao criar o usuário')
         }
     }
 
-    Homepage(req, res) {
-        res.redirect('/')
+    async updateProfile(req, res) {
+        const user_id = res.locals.user_id
+        const dataToUpdate = req.body
     }
 
-    Loginpage(req, res) {
-        res.redirect('/login')
-    }
+    async deleteProfile(req, res) {}
+
 }
 
 export default new AuthController()

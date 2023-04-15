@@ -1,0 +1,32 @@
+h2 {
+    font-size: 150%;
+}
+
+#form-profile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#form-profile input{
+    height: 40px;
+    font-size: 100%;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-top: 20px;
+}
+
+.options {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.options button:nth-child(2),
+.options button:nth-child(3) {
+    margin-top: 20px;
+}
