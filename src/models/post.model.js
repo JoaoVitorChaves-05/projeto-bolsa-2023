@@ -1,5 +1,4 @@
 import database from "../database/database.js"
-import { Sequelize } from "sequelize"
 
 class PostModel {
     constructor() {

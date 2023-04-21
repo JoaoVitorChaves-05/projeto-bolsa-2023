@@ -39,13 +39,7 @@ class Database {
             email: {
                 type: DataTypes.STRING,
                 allowNull: false
-            },
-            /*
-            userType: {
-                type: DataTypes.STRING,
-                allowNull: false
             }
-            */
         })
 
         await this.models.Users.sync()

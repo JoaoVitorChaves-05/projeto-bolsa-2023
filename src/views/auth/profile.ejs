@@ -23,10 +23,11 @@
     <main>
         <div class="container">
             <h2>Dados pessoais</h2>
+            <% if (user) { %>
             <form id="form-profile" action="/user?_method=PUT" method="post">
-                <input placeholder="Nome" type="text" name="name">
-                <input placeholder="Nº da matrícula" type="text" name="n_matricula">
-                <input placeholder="E-mail" type="email" name="email">
+                <input value="<%= user.name %>" placeholder="Nome" type="text" name="name">
+                <input value="<%= user.n_matricula %>" placeholder="Nº da matrícula" type="text" name="n_matricula">
+                <input value="<%= user.email %>" placeholder="E-mail" type="email" name="email">
                 <input placeholder="Nova senha" type="password" name="password">
                 <div class="options">
                     <button type="submit">Atualizar dados</button>
@@ -34,24 +35,33 @@
                     <button type="button">Excluir conta</button>
                 </div>
             </form>
+            <% } else { %>
+                <p style="text-align: center;">Não foi possível carregar seus dados</p>
+            <% } %>
             <h2>Postagens</h2>
             <div class="row">
-                <div class="row-item">
-                    <div id="map"></div>
-                    <div class="info">
-                        <p>Nome: </p>
-                        <p>Nº da matrícula: </p>
-                        <p>Origem: </p>
-                        <p>Destino: </p>
-                        <p>Horário de saída: </p>
-                        <p>Contato: </p>
-                        <p>Placa do carro: </p>
-                    </div>
-                    <div class="options">
-                        <button type="button">Editar postagem</button>
-                        <button type="button">Exluir postagem</button>
-                    </div>
-                </div>
+                <% if (posts.length) { %>
+                    <% for (let i = 0; i < posts.length; i++) { %>
+                        <div class="row-item">
+                            <div id="map"></div>
+                            <div class="info">
+                                <p>Nome: <%= user.name %></p>
+                                <p>Nº da matrícula: <%= user.n_matricula %> </p>
+                                <p>Origem: <%= posts[i].origin %> </p>
+                                <p>Destino: <%= posts[i].destiny %> </p>
+                                <p>Horário de saída: <%= posts[i].departure_time %> </p>
+                                <p>Contato: <%= posts[i].contact %> </p>
+                                <p>Placa do carro: <%= posts[i].car_id %> </p>
+                            </div>
+                            <div class="options">
+                                <button type="button">Editar postagem</button>
+                                <button type="button">Exluir postagem</button>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <p style="text-align: center;">Não há postagens</p>
+                <% } %>
             </div>
             <footer>
                 <div class="footer-item">

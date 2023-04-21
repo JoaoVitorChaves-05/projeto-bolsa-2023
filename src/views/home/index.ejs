@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/map.css">
-    <link rel="stylesheet" href="./leaflet/dist/leaflet.css" />
-    <script src="./leaflet/dist/leaflet.js"></script>
-    <script src="./scripts/map.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>    
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
 </head>
 <body>
     <header>
@@ -80,6 +83,7 @@
             </footer>
         </div>
     </main>
+    <script src="./scripts/map.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 </html>

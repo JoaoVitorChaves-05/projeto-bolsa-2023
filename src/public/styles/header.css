@@ -33,6 +33,15 @@ header nav a {
     font-size: 1.5rem;
 }
 
+
+ul li:nth-child(1)::after {
+    content: '';
+    display: block;
+
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
 header nav a:after {
     content: '';
     display: block;
