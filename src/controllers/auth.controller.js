@@ -14,9 +14,9 @@ class AuthController {
 
     async updateProfile(req, res) {
         const user_id = res.locals.user_id
+        const data = req.body
 
-        if (res.locals.auth && (!data.name.trim() || !data.email.trim() || !data.n_matricula.trim())) {
-            const data = req.body
+        if (res.locals.auth && (data.name.trim() || data.email.trim() || data.n_matricula.trim())) {
 
             if (data.password) {
                 const password_hash = bcryptjs.hashSync(data.password)
@@ -25,7 +25,7 @@ class AuthController {
                     where: { user_id: user_id }
                 })
 
-                res.status(200).render('auth/profile')
+                res.redirect('/profile')
                 return
             }
             
@@ -33,6 +33,7 @@ class AuthController {
                 where: { user_id: user_id }
             })
 
+            res.redirect('/profile')
             return
         }
     }
@@ -94,6 +95,8 @@ class AuthController {
 
         if (user_id) {
             await database.models.Posts.destroy({ where: {user_author_id: user_id} })
+            await database.models.Users.destroy({ where: {user_id: user_id} })
+            req.session.destroy()
             res.redirect('/')
             return
         } 

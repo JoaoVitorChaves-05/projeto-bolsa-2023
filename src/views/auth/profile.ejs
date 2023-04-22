@@ -30,9 +30,9 @@
                 <input value="<%= user.email %>" placeholder="E-mail" type="email" name="email">
                 <input placeholder="Nova senha" type="password" name="password">
                 <div class="options">
-                    <button type="submit">Atualizar dados</button>
-                    <button type="button">Sair da conta</button>
-                    <button type="button">Excluir conta</button>
+                    <button id="update-button" type="button">Atualizar dados</button>
+                    <button id="logout-button" type="button">Sair da conta</button>
+                    <button id="delete-button" type="button">Excluir conta</button>
                 </div>
             </form>
             <% } else { %>
@@ -81,5 +81,6 @@
             </footer>
         </div>
     </main>
+    <script src="./scripts/profile.js"></script>
 </body>
 </html>
