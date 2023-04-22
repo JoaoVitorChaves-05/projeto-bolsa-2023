@@ -1,0 +1,13 @@
+form .form-vertical-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+form .form-vertical-item label {
+    margin-right: 10px;
+}
+
+form .form-vertical-item input {
+    flex-grow: 1;
+}
