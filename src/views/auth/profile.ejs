@@ -1,86 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - Caronas IFSP</title>
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/profile.css">
+    <title>Caronas - IFSP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/profile.css">
 </head>
 <body>
-    <header>
-        <h1>Caronas - IFSP</h1>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/profile">Perfil</a>
-            <a href="/about">Sobre</a>
-        </nav>
+    <header class="container-fluid">
+        <div class="row p-3">
+            <div class="col-lg-10 col-sm-9">
+                <h1>Caronas - IFSP</h1>
+            </div>
+            <div class="col-lg-2 col-sm-3">
+                <button type="button" class="btn btn-outline-light dropdown-toggle container-fluid" data-toggle="dropdown">
+                    Menu
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/">Início</a>
+                    <a class="dropdown-item" href="/profile">Perfil</a>
+                    <a class="dropdown-item" href="/about">Sobre</a>
+                </div>
+            </div>
+        </div>
     </header>
-    <main>
-        <div class="container">
-            <h2>Dados pessoais</h2>
-            <% if (user) { %>
-            <form id="form-profile" action="/user?_method=PUT" method="post">
-                <input value="<%= user.name %>" placeholder="Nome" type="text" name="name">
-                <input value="<%= user.n_matricula %>" placeholder="Nº da matrícula" type="text" name="n_matricula">
-                <input value="<%= user.email %>" placeholder="E-mail" type="email" name="email">
-                <input placeholder="Nova senha" type="password" name="password">
-                <div class="options">
-                    <button id="update-button" type="button">Atualizar dados</button>
-                    <button id="logout-button" type="button">Sair da conta</button>
-                    <button id="delete-button" type="button">Excluir conta</button>
+    <main class="container-fluid p-3">
+        <h2 class="text-center">Dados pessoais</h2>
+        <div class="row justify-content-center p-3">
+            <form class="col-lg-6 col-md-8 col-10 p-3 border shadow" action="/user?_method=PUT" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome completo</label>
+                    <input value="<%= user.name %>" type="text" name="name" placeholder="Nome Sobrenome" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input value="<%= user.email %>" type="email" class="form-control" placeholder="nome@exemplo.com">
+                </div>
+                <div class="mb-3">
+                    <label for="n_matricula" class="form-label">Nº da matrícula</label>
+                    <input value="<%= user.n_matricula %>" type="text" class="form-control" placeholder="JCXXXXXXX">
+                </div>
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">Nova senha</label>
+                    <input type="newPassword" class="form-control" placeholder="*******">
+                </div>
+                <div class="mb-3">
+                    <button id="update-button" type="submit" class="btn btn-success w-100">Atualizar dados</button>
+                </div>
+                <div class="mb-3">
+                    <button id="logout-button" type="button" class="btn btn-warning w-100">Sair da conta</button>
+                </div>
+                <div class="mb-3">
+                    <button id="delete-button" type="button" class="btn btn-danger w-100">Excluir conta</button>
                 </div>
             </form>
-            <% } else { %>
-                <p style="text-align: center;">Não foi possível carregar seus dados</p>
-            <% } %>
-            <h2>Postagens</h2>
-            <div class="row">
-                <% if (posts.length) { %>
-                    <% for (let i = 0; i < posts.length; i++) { %>
-                        <div class="row-item">
-                            <div id="map"></div>
+        </div>
+        <h2 class="text-center">Postagens</h2>
+        <div class="row justify-content-center">
+            <% if (posts.length) { %>
+                <% for (let i = 0; i < posts.length; i++) { %>
+                    <div class="card mb-3 p-3 border col-lg-6 col-md-8 col-10 p-3 shadow">
+                        <form id="<%= posts[i].post_id %>" class="form-post">
+                            <input value="<%= posts[i].post_id %>" type="number" name="post_id" hidden>
                             <div class="info">
-                                <p>Nome: <%= user.name %></p>
-                                <p>Nº da matrícula: <%= user.n_matricula %> </p>
-                                <p>Origem: <%= posts[i].origin %> </p>
-                                <p>Destino: <%= posts[i].destiny %> </p>
-                                <p>Horário de saída: <%= posts[i].departure_time %> </p>
-                                <p>Contato: <%= posts[i].contact %> </p>
-                                <p>Placa do carro: <%= posts[i].car_id %> </p>
+                                <p class="card-text">Nome: <%= user.name %></p>
+                                <p class="card-text">Nº da matrícula: <%= user.n_matricula %> </p>
+                                <p class="card-text">Origem: <%= posts[i].origin %> </p>
+                                <p class="card-text">Destino: <%= posts[i].destiny %> </p>
+                                <p class="card-text">Horário de saída: <%= posts[i].departure_time %> </p>
+                                <p class="card-text">Contato: <%= posts[i].contact %> </p>
+                                <p class="card-text">Placa do carro: <%= posts[i].car_id %> </p>
                             </div>
-                            <div class="options">
-                                <button type="button">Editar postagem</button>
-                                <button type="button">Exluir postagem</button>
+                            <div class="mb-3">
+                                <button class="updatePostButton btn btn-info w-100" type="button">Editar postagem</button>
                             </div>
-                        </div>
-                    <% } %>
-                <% } else { %>
-                    <p style="text-align: center;">Não há postagens</p>
+                            <div class="mb-3">
+                                <button class="deletePostButton btn btn-danger w-100" type="button">Exluir postagem</button>
+                            </div>
+                        </form>
+                    </div>
                 <% } %>
-            </div>
-            <footer>
-                <div class="footer-item">
-                    <h3>Apoiadores</h3>
-                    <p>IFSP - Jacareí</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Desenvolvedor</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Idealização</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-            </footer>
+            <% } else { %>
+                <p style="text-align: center;">Não há postagens</p>
+            <% } %>    
         </div>
     </main>
+    <footer class="container-fluid p-3">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3>Apoiadores</h3>
+                <p>IFSP - Jacareí</p>
+                <p>Tardelli Stekel</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Desenvolvedor</h3>
+                <p>João Vitor Mâncio Chaves</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Idealização</h3>
+                <p>João Vitor Mâncio Chaves</p>
+                <p>Tardelli Stekel</p>
+            </div>
+        </div>
+    </footer>
+    <div class="modal">
+        <form class="panel" action="/post?_method=PUT" method="post">
+            <h2>Atualizar postagem</h2>
+            <input class="update-input" type="number" name="post_id" hidden>
+            <div class="form-vertical-item">
+                <label for="origin">Origem</label>
+                <input class="update-input" type="text" name="origin" placeholder="Rua de exemplo, 1">
+            </div>
+            <div class="form-vertical-item">
+                <label for="destiny">Destino</label>
+                <input class="update-input" type="text" name="destiny" placeholder="Rua de exemplo, 2">
+            </div>
+            <div class="form-vertical-item">
+                <label for="departure_time">Hora de saída</label>
+                <div class="form-line-item">
+                    <input min="00" max="23" class="update-input" placeholder="Horas" type="number" name="hours">
+                    <span>h</span>
+                    <input min="00" max="59" class="update-input" placeholder="Minutos" type="number" name="minutes">
+                </div>
+            </div>
+            <div class="form-vertical-item">
+                <label for="contact">Contato</label>
+                <input class="update-input" type="tel" name="contact" placeholder="(XX) XXXXX-XXXX">
+            </div>
+            <div class="form-vertical-item">
+                <label for="car_id">Placa do carro</label>
+                <input class="update-input" type="text" name="car_id" placeholder="ABC1234">
+            </div>
+            <button class="btn-update-form" id="submit-update" type="submit">Atualizar carona</button>
+            <button class="btn-update-form" id="cancel-update">Cancelar</button>
+        </form>
+    </div>
     <script src="./scripts/profile.js"></script>
 </body>
 </html>

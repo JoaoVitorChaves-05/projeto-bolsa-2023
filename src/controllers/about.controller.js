@@ -1,6 +1,7 @@
 class About {
     index(req, res) {
-        res.status(200).render('about/index')
+        const authStatus = res.locals.auth
+        res.status(200).render('about/index', { hasSession: authStatus })
     }
 }
 

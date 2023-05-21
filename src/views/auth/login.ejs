@@ -5,53 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caronas - IFSP</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/form.css">
-    <link rel="stylesheet" href="./styles/footer.css">
 </head>
 <body>
-    <header>
-        <h1>Caronas - IFSP</h1>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/signUp">Cadastro</a>
-            <a href="/login">Login</a>
-            <a href="/about">Sobre</a>
-        </nav>
-    </header>
-    <main>
-        <% if (message) { %>
-            <div class="error">
-                <p><%= message %></p>
+    <header class="container-fluid">
+        <div class="row p-3">
+            <div class="col-lg-10 col-sm-9">
+                <h1>Caronas - IFSP</h1>
             </div>
-        <% } %>
-        <div class="container">
-            <h2 class="form-title">Quem é você?</h2>
-            <p class="form-subtitle">Efetue o login abaixo para que possa fazer uma postagem</p>
-            <form action="/login" method="post">
-                <input type="email" name="email" placeholder="E-mail" />
-                <input type="password" name="password" placeholder="Senha">
-                <button type="submit">Entrar</button>
+            <div class="col-lg-2 col-sm-3">
+                <button type="button" class="btn btn-outline-light dropdown-toggle container-fluid" data-toggle="dropdown">
+                    Menu
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/">Início</a>
+                    <a class="dropdown-item" href="/signUp">Cadastro</a>
+                    <a class="dropdown-item" href="/login">Login</a>
+                    <a class="dropdown-item" href="/about">Sobre</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container-fluid p-3">
+        <h2 class="text-center">Quem é você?</h2>
+        <p class="text-center" id="subtitle">Efetue o login abaixo para que possa fazer uma postagem</p>
+        <div class="row justify-content-center">
+            <form class="col-lg-4 col-md-8 col-10 p-3 border shadow-lg" action="/login" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input name="email" type="email" class="form-control" placeholder="nome@exemplo.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input name="password" type="password" class="form-control" placeholder="*******">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success w-100">Entrar</button>
+                </div>
             </form>
-            <footer>
-                <div class="footer-item">
-                    <h3>Apoiadores</h3>
-                    <p>IFSP - Jacareí</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Desenvolvedor</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Idealização</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-            </footer>
         </div>
     </main>
+    <footer class="container-fluid p-3">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3>Apoiadores</h3>
+                <p>IFSP - Jacareí</p>
+                <p>Tardelli Stekel</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Desenvolvedor</h3>
+                <p>João Vitor Mâncio Chaves</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Idealização</h3>
+                <p>João Vitor Mâncio Chaves</p>
+                <p>Tardelli Stekel</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

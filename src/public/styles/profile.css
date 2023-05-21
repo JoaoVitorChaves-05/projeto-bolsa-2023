@@ -1,3 +1,27 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.493);
+    width: 100%;
+    height: 100%;
+}
+
+.modal .panel {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    width: 60%;
+    padding: 25px;
+}
+
+/* Oldest CSS */
+/*
 h2 {
     font-size: 150%;
 }
@@ -30,3 +54,86 @@ h2 {
 .options button:nth-child(3) {
     margin-top: 20px;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.493);
+    width: 100%;
+    height: 100%;
+}
+
+.modal .panel {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    width: 60%;
+    padding: 25px;
+}
+
+.modal .panel .btn-update-form {
+    width: 100%;
+    font-size: 140%;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    margin-top: 10px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+
+.modal .panel #submit-update {
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+    transition: .5s;
+}
+
+.modal .panel #submit-update:hover {
+    background-color: green;
+    color: white;
+}
+
+.modal .panel #cancel-update {
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    transition: .5s;
+}
+
+.modal .panel #cancel-update:hover {
+    background: red;
+    color: white;
+}
+
+.modal .panel .form-vertical-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .panel .form-vertical-item label, 
+.modal .panel .form-vertical-item .update-input,
+.modal .panel .form-vertical-item span {
+    font-size: 140%;
+    padding: 15px;
+}
+
+.modal .panel .form-vertical-item .update-input {
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid gray;
+    border-left: 0;
+
+    background-color: rgb(232, 232, 232);
+    border-radius: 15px;
+}
+*/

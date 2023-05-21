@@ -1,4 +1,17 @@
 header {
+    background-color: green;
+    color: white;
+}
+
+@media screen and (max-width: 576px) {
+    header h1 {
+        text-align: center;
+    }
+}
+/* Oldest CSS for HEADER */
+
+/*
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,3 +69,4 @@ header nav a:hover::after {
     border: 1px solid white;
     width: 100%;
 }
+*/

@@ -8,18 +8,25 @@ class PostController {
             res.redirect('/login')
     }
 
+    async getPost(req, res) {
+        const { post_id } = req.query
+
+        const result = await PostModel.getPost(post_id)
+
+        console.log(result)
+
+        res.status(200).json(result)
+    }
+
     async addPost(req, res) {
         const {origin, destiny, hours, minutes, contact, car_id} = req.body
 
-        const token = req.session.token
-        const sessions = Auth.sessions
-
-        const currentSession = sessions.find(session => session.token == token)
+        const user_id = res.locals.user_id
 
         const departure_time = hours + 'h' + minutes
 
         await PostModel.addPost({
-            user_author_id: currentSession.user_id,
+            user_author_id: user_id,
             origin,
             destiny,
             departure_time,
@@ -28,6 +35,38 @@ class PostController {
         })
 
         res.redirect('/')
+    }
+
+    async updatePost(req, res) {
+        const { origin, destiny, hours, minutes, contact, car_id, post_id } = req.body
+        const { user_id } = res.locals
+
+        const result = await PostModel.updatePost({
+            user_id: user_id, 
+            post_id: Number(post_id),
+            data: {
+                origin,
+                destiny,
+                departure_time: hours + 'h' + minutes,
+                contact,
+                car_id
+            }
+        })
+
+        console.log(result)
+
+        res.redirect('/profile')
+    }
+
+    async deletePost(req, res) {
+        const { post_id } = req.body
+        const { user_id } = res.locals
+
+        const result = await PostModel.deletePost({post_id: Number(post_id), user_id})
+
+        console.log(result)
+
+        res.redirect('/profile')
     }
 }
 

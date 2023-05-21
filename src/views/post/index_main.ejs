@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caronas - IFSP</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/form.css">
+    <link rel="stylesheet" href="./styles/post.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+</head>
+
+<body>
+    <header>
+        <h1>Caronas - IFSP</h1>
+        <nav>
+            <% if (hasSession) { %>
+                <a href="/">Início</a>
+                <a href="/profile">Perfil</a>
+                <a href="/about">Sobre</a>
+                <% } else { %>
+                    <a href="/">Início</a>
+                    <a href="/signUp">Cadastro</a>
+                    <a href="/login">Login</a>
+                    <a href="/about">Sobre</a>
+                    <% } %>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <form action="/post" method="post">
+                <div class="form-vertical-item">
+                    <label for="origin">Origem</label>
+                    <input type="text" name="origin" placeholder="Rua de exemplo, 1">
+                </div>
+                <div class="form-vertical-item">
+                    <label for="destiny">Destino</label>
+                    <input type="text" name="destiny" placeholder="Rua de exemplo, 2">
+                </div>
+                <div class="form-vertical-item">
+                    <label for="departure_time">Hora de saída</label>
+                    <div class="form-line-item">
+                        <input placeholder="Horas" type="number" name="hours">
+                        <input placeholder="Minutos" type="number" name="minutes">
+                    </div>
+                </div>
+                <div class="form-vertical-item">
+                    <label for="contact">Contato</label>
+                    <input type="tel" name="contact" placeholder="(XX) XXXXX-XXXX">
+                </div>
+                <div class="form-vertical-item">
+                    <label for="car_id">Placa do carro</label>
+                    <input type="text" name="car_id" placeholder="ABC1234">
+                </div>
+                <button type="submit">Publicar carona</button>
+            </form>
+            <footer>
+                <div class="footer-item">
+                    <h3>Apoiadores</h3>
+                    <p>IFSP - Jacareí</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Desenvolvedor</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Idealização</h3>
+                    <p>João Vitor Mâncio Chaves</p>
+                    <p>Tardelli Stekel</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>

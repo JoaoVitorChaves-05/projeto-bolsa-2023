@@ -5,85 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caronas - IFSP</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/footer.css">
-    <link rel="stylesheet" href="./styles/map.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>    
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
 </head>
 <body>
-    <header>
-        <h1>Caronas - IFSP</h1>
-        <% if (hasSession) { %>
-            <nav>
-                <a href="/">Início</a>
-                <a href="/profile">Perfil</a>
-                <a href="/about">Sobre</a>
-            </nav>
-        <% } else { %>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/signUp">Cadastro</a>
-            <a href="/login">Login</a>
-            <a href="/about">Sobre</a>
-        </nav>
-        <% } %>
-    </header>
-    <main>
-        <div class="container">
-            <button onclick="addPost()">Adicionar postagem</button>
-            <% if (data.length) { %>
-                <div class="row">
-                    <% for (let i = 0; i < data.length; i++) { %>
-                        <div class="row-item">
-                            <div id="map"></div>
-                            <div class="info">
-                                <h2><%= data[i].dataValues.autor%></h2>
-                                <p>Nome: <%= data[i].dataValues.User.dataValues.name %></p>
-                                <p>Nº da matrícula: <%= data[i].dataValues.User.dataValues.n_matricula%></p>
-                                <p>Origem: <%= data[i].dataValues.origin%></p>
-                                <p>Destino: <%= data[i].dataValues.destiny%></p>
-                                <p>Horário de saída: <%= data[i].dataValues.departure_time%></p>
-                                <p>Contato: <a href="https://wa.me/<%= data[i].dataValues.contact %>"><%= data[i].dataValues.contact%></a></p>
-                                <p>Placa do carro: <%= data[i].dataValues.car_id %> </p>
-                                <p><strong>AVISO: Verifique a placa do carro antes de entrar</strong></p>
-                            </div>
-                        </div>
-                    <% } %>
-                </div>
-            <% } else { %>
-                <div class="no-content">
-                    <div class="no-content-item">
-                        <h2>Ninguém postou nada ainda!</h2>
-                        <p>Seja o primeiro, basta ter uma conta aprovada para efetuar uma postagem.</p>
+    <header class="container-fluid">
+        <div class="row p-3">
+            <div class="col-lg-10 col-sm-9">
+                <h1>Caronas - IFSP</h1>
+            </div>
+            <div class="col-lg-2 col-sm-3">
+                <button type="button" class="btn btn-outline-light dropdown-toggle container-fluid" data-toggle="dropdown">
+                    Menu
+                </button>
+                <% if (hasSession) { %>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/">Início</a>
+                        <a class="dropdown-item" href="/profile">Perfil</a>
+                        <a class="dropdown-item" href="/about">Sobre</a>
                     </div>
+                <% } else { %>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/">Início</a>
+                    <a class="dropdown-item" href="/signUp">Cadastro</a>
+                    <a class="dropdown-item" href="/login">Login</a>
+                    <a class="dropdown-item" href="/about">Sobre</a>
                 </div>
-            <% } %>    
-            <footer>
-                <div class="footer-item">
-                    <h3>Apoiadores</h3>
-                    <p>IFSP - Jacareí</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Desenvolvedor</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                </div>
-                <div class="footer-item">
-                    <h3>Idealização</h3>
-                    <p>João Vitor Mâncio Chaves</p>
-                    <p>Tardelli Stekel</p>
-                </div>
-            </footer>
+                <% } %>
+            </div>
         </div>
+    </header>
+    <main class="container-fluid p-3">
+        <div class="row justify-content-center p-3">
+            <button class="btn btn-success w-75" onclick="addPost()">Adicionar postagem</button>
+        </div>
+        <% if (data.length) { %>
+            <div class="row justify-content-center p-3">
+                <% for (let i = 0; i < data.length; i++) { %>
+                    <div class="card w-75 mb-3 p-3 shadow">
+                        <h5 class="card-title">
+                            <%= data[i].dataValues.User.dataValues.name %>
+                        </h5>
+                        <p class="card-text">Nº da matrícula: <%= data[i].dataValues.User.dataValues.n_matricula%></p>
+                        <p class="card-text">Origem: <%= data[i].dataValues.origin%></p>
+                        <p class="card-text">Destino: <%= data[i].dataValues.destiny%></p>
+                        <p class="card-text">Horário de saída: <%= data[i].dataValues.departure_time%></p>
+                        <p class="card-text">Contato: <a href="https://wa.me/<%= data[i].dataValues.contact %>"><%= data[i].dataValues.contact%></a></p>
+                        <p class="card-text">Placa do carro: <%= data[i].dataValues.car_id %> </p>
+                        <p class="card-text"><strong>AVISO: Verifique a placa do carro antes de entrar</strong></p>
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="no-content">
+                <div class="no-content-item">
+                    <h2>Ninguém postou nada ainda!</h2>
+                    <p>Seja o primeiro, basta ter uma conta aprovada para efetuar uma postagem.</p>
+                </div>
+            </div>
+        <% } %>
     </main>
-    <script src="./scripts/map.js"></script>
+    <footer class="container-fluid p-3">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3>Apoiadores</h3>
+                <p>IFSP - Jacareí</p>
+                <p>Tardelli Stekel</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Desenvolvedor</h3>
+                <p>João Vitor Mâncio Chaves</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Idealização</h3>
+                <p>João Vitor Mâncio Chaves</p>
+                <p>Tardelli Stekel</p>
+            </div>
+        </div>
+    </footer>
     <script src="./scripts/main.js"></script>
 </body>
 </html>
