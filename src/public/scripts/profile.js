@@ -1,6 +1,5 @@
 const modal = document.querySelector('.modal')
-modal.style.zIndex = -99
-modal.style.opacity = 0
+
 
 const formProfile = document.querySelector('#form-profile')
 
@@ -36,12 +35,6 @@ deletePostButton.forEach((button) => {
     })
 })
 
-cancelUpdatePostButton.addEventListener('click', () => {
-    const modal = document.querySelector('.modal')
-    modal.style.zIndex = -99
-    modal.style.opacity = 0
-    document.body.style.overflowY = 'scroll'
-})
 
 updatePostButton.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -67,12 +60,6 @@ updatePostButton.forEach((button) => {
 
             input.value = post[input.name]
         })
-
-        const modal = document.querySelector('.modal')
-        const panel = document.querySelector('.panel')
-        modal.style.zIndex = 1031
-        modal.style.opacity = 1
-        panel.style.overflowY = 'scroll'
         //document.body.style.overflowY = 'hidden'
     })
 })

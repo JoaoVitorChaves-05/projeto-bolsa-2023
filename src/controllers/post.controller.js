@@ -19,7 +19,7 @@ class PostController {
     }
 
     async addPost(req, res) {
-        const {origin, destiny, hours, minutes, contact, car_id} = req.body
+        const {origin, destiny, hours, minutes, contact, car_id, marker_origin_lat, marker_origin_lng, marker_destiny_lat, marker_destiny_lng} = req.body
 
         const user_id = res.locals.user_id
 
@@ -31,7 +31,11 @@ class PostController {
             destiny,
             departure_time,
             contact,
-            car_id
+            car_id,
+            marker_origin_lat,
+            marker_origin_lng,
+            marker_destiny_lat,
+            marker_destiny_lng
         })
 
         res.redirect('/')

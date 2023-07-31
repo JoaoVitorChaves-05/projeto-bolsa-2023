@@ -40,11 +40,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
-                    <input value="<%= user.email %>" type="email" class="form-control" placeholder="nome@exemplo.com">
+                    <input name="email" value="<%= user.email %>" type="email" class="form-control" placeholder="nome@exemplo.com">
                 </div>
                 <div class="mb-3">
                     <label for="n_matricula" class="form-label">Nº da matrícula</label>
-                    <input value="<%= user.n_matricula %>" type="text" class="form-control" placeholder="JCXXXXXXX">
+                    <input name="" value="<%= user.n_matricula %>" type="text" class="form-control" placeholder="JCXXXXXXX">
                 </div>
                 <div class="mb-3">
                     <label for="newPassword" class="form-label">Nova senha</label>
@@ -78,7 +78,7 @@
                                 <p class="card-text">Placa do carro: <%= posts[i].car_id %> </p>
                             </div>
                             <div class="mb-3">
-                                <button class="updatePostButton btn btn-info w-100" type="button">Editar postagem</button>
+                                <button class="updatePostButton btn btn-info w-100" type="button" data-toggle="modal" data-target="#update-modal">Editar postagem</button>
                             </div>
                             <div class="mb-3">
                                 <button class="deletePostButton btn btn-danger w-100" type="button">Exluir postagem</button>
@@ -109,36 +109,50 @@
             </div>
         </div>
     </footer>
-    <div class="modal">
-        <form class="panel" action="/post?_method=PUT" method="post">
-            <h2>Atualizar postagem</h2>
-            <input class="update-input" type="number" name="post_id" hidden>
-            <div class="form-vertical-item">
-                <label for="origin">Origem</label>
-                <input class="update-input" type="text" name="origin" placeholder="Rua de exemplo, 1">
-            </div>
-            <div class="form-vertical-item">
-                <label for="destiny">Destino</label>
-                <input class="update-input" type="text" name="destiny" placeholder="Rua de exemplo, 2">
-            </div>
-            <div class="form-vertical-item">
-                <label for="departure_time">Hora de saída</label>
-                <div class="form-line-item">
-                    <input min="00" max="23" class="update-input" placeholder="Horas" type="number" name="hours">
-                    <span>h</span>
-                    <input min="00" max="59" class="update-input" placeholder="Minutos" type="number" name="minutes">
+    <div class="modal fade" tabindex="-1" role="dialog" id="update-modal" aria-labelledby="update-modal" aria-hidden="true">
+        <form class="modal-dialog modal-dialog-centered" role="document" action="/post?_method=PUT" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Atualizar postagem</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input class="update-input" type="number" name="post_id" hidden>
+                    <div class="mb-3">
+                        <label class="form-label" for="origin">Origem</label>
+                        <input class="update-input form-control" type="text" name="origin" placeholder="Rua de exemplo, 1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="destiny">Destino</label>
+                        <input class="update-input form-control" type="text" name="destiny" placeholder="Rua de exemplo, 2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="departure_time">Hora de saída</label>
+                        <div class="row">
+                            <div class="col">
+                                <input min="00" max="23" class="update-input form-control" placeholder="Horas" type="number" name="hours">
+                            </div>
+                            <div class="col">
+                                <input min="00" max="59" class="update-input form-control" placeholder="Minutos" type="number" name="minutes">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="mb-3" for="contact">Contato</label>
+                        <input class="update-input form-control" type="tel" name="contact" placeholder="(XX) XXXXX-XXXX">
+                    </div>
+                    <div class="mb-3">
+                        <label class="mb-3" for="car_id">Placa do carro</label>
+                        <input class="update-input form-control" type="text" name="car_id" placeholder="ABC1234">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-update-form btn btn-success" id="submit-update" type="submit">Atualizar carona</button>
+                    <button class="btn-update-form btn btn-danger" id="cancel-update">Cancelar</button>
                 </div>
             </div>
-            <div class="form-vertical-item">
-                <label for="contact">Contato</label>
-                <input class="update-input" type="tel" name="contact" placeholder="(XX) XXXXX-XXXX">
-            </div>
-            <div class="form-vertical-item">
-                <label for="car_id">Placa do carro</label>
-                <input class="update-input" type="text" name="car_id" placeholder="ABC1234">
-            </div>
-            <button class="btn-update-form" id="submit-update" type="submit">Atualizar carona</button>
-            <button class="btn-update-form" id="cancel-update">Cancelar</button>
         </form>
     </div>
     <script src="./scripts/profile.js"></script>

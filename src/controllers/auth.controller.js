@@ -68,6 +68,8 @@ class AuthController {
         const { Users } = database.models
         const { name, email, password, n_matricula } = req.body
     
+        console.log(req.body)
+        
         if (!name.trim() || !email.trim() || !password.trim() || !n_matricula.trim()) {
             res.status(200).render('auth/signUp', { message: 'Ops! Ocorreu um erro. Tente novamente mais tarde.' })
             return

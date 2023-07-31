@@ -77,6 +77,22 @@ class Database {
             car_id: {
                 type: DataTypes.STRING,
                 allowNull: false
+            },
+            marker_origin_lat: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_origin_lng: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_destiny_lat: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_origin_lng: {
+                type: DataTypes.FLOAT,
+                allowNull: false
             }
         })
           

@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/map.css">
 </head>
 <body>
     <header class="container-fluid">
@@ -40,12 +41,13 @@
     </header>
     <main class="container-fluid p-3">
         <div class="row justify-content-center p-3">
-            <button class="btn btn-success w-75" onclick="addPost()">Adicionar postagem</button>
+            <button class="btn btn-success col-md-9" onclick="addPost()">Adicionar postagem</button>
         </div>
         <% if (data.length) { %>
             <div class="row justify-content-center p-3">
+                <div id="map"></div>
                 <% for (let i = 0; i < data.length; i++) { %>
-                    <div class="card w-75 mb-3 p-3 shadow">
+                    <div class="card col-md-9 mb-3 p-3 shadow">
                         <h5 class="card-title">
                             <%= data[i].dataValues.User.dataValues.name %>
                         </h5>
@@ -60,8 +62,8 @@
                 <% } %>
             </div>
         <% } else { %>
-            <div class="no-content">
-                <div class="no-content-item">
+            <div class="no-content row justify-content-center p-3">
+                <div class="no-content-item col text-center">
                     <h2>Ninguém postou nada ainda!</h2>
                     <p>Seja o primeiro, basta ter uma conta aprovada para efetuar uma postagem.</p>
                 </div>
@@ -87,5 +89,6 @@
         </div>
     </footer>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/map.js"></script>
 </body>
 </html>

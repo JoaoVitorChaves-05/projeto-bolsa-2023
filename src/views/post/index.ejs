@@ -10,6 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
     <header class="container-fluid">
@@ -44,11 +46,14 @@
             <form class="col-lg-4 col-md-8 col-10 p-3 border shadow-lg" action="/post" method="post">
                 <div class="mb-3">
                     <label class="form-label" for="origin">Origem</label>
-                    <input class="form-control" type="text" name="origin" placeholder="Rua de exemplo, 1">
+                    <input id="origin" class="form-control" type="text" name="origin" placeholder="Rua de exemplo, 1">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="destiny">Destino</label>
-                    <input class="form-control" type="text" name="destiny" placeholder="Rua de exemplo, 2">
+                    <input id="destiny" class="form-control" type="text" name="destiny" placeholder="Rua de exemplo, 2">
+                </div>
+                <div class="mb-3">
+                    <div id="map"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="departure_time">Hora de saída</label>
@@ -72,6 +77,10 @@
                 <div class="mb-3">
                     <button class="btn btn-success w-100" type="submit">Publicar carona</button>        
                 </div>
+                <input id="marker_origin_lat" name="marker_origin_lat" type="text" hidden>
+                <input id="marker_origin_lng" name="marker_origin_lng" type="text" hidden>
+                <input id="marker_destiny_lat" name="marker_destiny_lat" type="text" hidden>
+                <input id="marker_destiny_lng" name="marker_destiny_lng" type="text" hidden>
             </form>
         </div>
     </main>
@@ -93,5 +102,8 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="./scripts/map.js"></script>
+    <script src="./scripts/addPost.js"></script>
 </body>
 </html>
