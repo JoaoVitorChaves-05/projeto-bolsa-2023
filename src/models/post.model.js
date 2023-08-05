@@ -11,7 +11,7 @@ class PostModel {
         Posts.belongsTo(Users, { foreignKey: 'user_author_id' })
 
         const data = await Posts.findAll({
-            attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'createdAt', 'updatedAt'],
+            attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'marker_origin_lat', 'marker_origin_lng', 'marker_destiny_lat', 'marker_destiny_lng', 'createdAt', 'updatedAt'],
             include: {
                 model: Users,
                 attributes: ['name', 'n_matricula'],
@@ -30,7 +30,7 @@ class PostModel {
         Posts.belongsTo(Users, { foreignKey: 'user_author_id' })
 
         const data = await Posts.findOne({
-            attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'createdAt', 'updatedAt'],
+            attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'marker_origin_lat', 'marker_origin_lng', 'marker_destiny_lat', 'marker_destiny_lng', 'createdAt', 'updatedAt'],
             include: {
                 model: Users,
                 attributes: ['name', 'n_matricula'],

@@ -1,4 +1,5 @@
-#map {
+#map,
+#homeMap {
     width: 100%;
     height: 360px;
 }

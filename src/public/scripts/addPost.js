@@ -82,19 +82,3 @@ inputDestiny.addEventListener('change', (e) => {
         })
     }, 3000)
 })
-
-/*
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    const formData = new FormData()
-
-    formData.append('marker_origin_lat', markers.origin[0].getLatLng().lat + '')
-    formData.append('marker_origin_lng', markers.origin[0].getLatLng().lng + '')
-    formData.append('marker_destiny_lat', markers.destiny[0].getLatLng().lat + '')
-    formData.append('marker_destiny_lng', markers.destiny[0].getLatLng().lng + '')
-
-    console.log(formData)
-    form.submit()
-})
-*/

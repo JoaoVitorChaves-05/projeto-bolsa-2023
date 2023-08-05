@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
     <header class="container-fluid">
@@ -40,12 +41,16 @@
         </div>
     </header>
     <main class="container-fluid p-3">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div id="map"></div>
+            </div>
+        </div>
         <div class="row justify-content-center p-3">
             <button class="btn btn-success col-md-9" onclick="addPost()">Adicionar postagem</button>
         </div>
         <% if (data.length) { %>
             <div class="row justify-content-center p-3">
-                <div id="map"></div>
                 <% for (let i = 0; i < data.length; i++) { %>
                     <div class="card col-md-9 mb-3 p-3 shadow">
                         <h5 class="card-title">
@@ -89,6 +94,37 @@
         </div>
     </footer>
     <script src="./scripts/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="./scripts/map.js"></script>
+    <script>
+        var postsMarkers = <%- JSON.stringify(data) %>
+        console.log(postsMarkers)
+
+        const originIcon = L.icon({
+            iconUrl: '/images/icons/local.png',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38]
+        })
+
+        const flagIcon = L.icon({
+            iconUrl: '/images/icons/flag-checkered.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38]
+        })
+
+        postsMarkers.forEach(element => {
+            let markerOrigin = new L.LatLng(element.marker_origin_lat, element.marker_origin_lng)
+            let marker = L.marker(markerOrigin, { icon: originIcon })
+            .bindPopup(`Autor: ${element.User.name}<br> Contato: <a href="https://wa.me/55${element.contact}">${element.contact}</a>`)
+
+            marker.addTo(map)
+
+            let markerDestiny = new L.LatLng(element.marker_destiny_lat, element.marker_destiny_lng)
+            marker = L.marker(markerDestiny, { icon: flagIcon })
+            .bindPopup(`Autor: ${element.User.name}<br> Contato: <a href="https://wa.me/55${element.contact}">${element.contact}</a>`)
+
+            marker.addTo(map)
+        })
+    </script>
 </body>
 </html>

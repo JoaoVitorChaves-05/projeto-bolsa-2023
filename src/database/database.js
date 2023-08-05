@@ -90,13 +90,52 @@ class Database {
                 type: DataTypes.FLOAT,
                 allowNull: false
             },
-            marker_origin_lng: {
+            marker_destiny_lng: {
                 type: DataTypes.FLOAT,
                 allowNull: false
             }
         })
           
         await this.models.Posts.sync()
+
+        this.models.Days = this.connection.define('Days', {
+            day_id: {
+                autoIncrement: true,
+                primaryKey: true,
+                type: DataTypes.INTEGER
+            },
+            day_name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true
+            }
+        })
+
+        await this.models.Days.sync()
+
+        this.models.Posts_Days = this.connection.define('Posts_Days', {
+            post_days_id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            day_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: this.models.Days,
+                    key: 'day_id'
+                }
+            },
+            post_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: this.models.Posts,
+                    key: 'post_id'
+                }
+            }
+        })
     }
 }
 
