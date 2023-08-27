@@ -1,0 +1,45 @@
+<div class="mb-3">
+    <div class="mb-1">
+        <label for="" class="form-label">Dias da carona</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="1" id="day-1" class="form-check-input">
+        <label class="form-check-label" for="day-1">Domingo</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="2" id="day-2" class="form-check-input">
+        <label class="form-check-label" for="day-2">Segunda-feira</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="3" id="day-3" class="form-check-input">
+        <label class="form-check-label" for="day-3">Terça-feira</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="4" id="day-4" class="form-check-input">
+        <label class="form-check-label" for="day-4">Quarta-feira</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="5" id="day-5" class="form-check-input">
+        <label class="form-check-label" for="day-5">Quinta-feira</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="6" id="day-6" class="form-check-input">
+        <label class="form-check-label" for="day-6">Sexta-feira</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="7" id="day-7" class="form-check-input">
+        <label class="form-check-label" for="day-7">Sábado</label>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label" for="departure_time">Hora de saída</label>
+    <div class="row">
+        <div class="col">
+            <input class="form-control" placeholder="Horas" type="number" name="hours">
+        </div>
+        <div class="col">
+            <input class="form-control" placeholder="Minutos" type="number" name="minutes">
+        </div>
+    </div>
+</div>

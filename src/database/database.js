@@ -66,6 +66,60 @@ class Database {
                 type: DataTypes.STRING,
                 allowNull: false
             },
+            contact: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            car_id: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            marker_origin_lat: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_origin_lng: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_destiny_lat: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            marker_destiny_lng: {
+                type: DataTypes.FLOAT,
+                allowNull: false
+            },
+            description: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
+        })
+
+        await this.models.Posts.sync()
+        /*
+        this.models.Posts = this.connection.define('Posts', {
+            post_id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            user_author_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: this.models.Users,
+                    key: 'user_id'
+                }
+            },
+            origin: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            destiny: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
             departure_time: {
                 type: DataTypes.STRING,
                 allowNull: false
@@ -136,6 +190,9 @@ class Database {
                 }
             }
         })
+
+        this.models.Posts_Days.sync()
+        */
     }
 }
 

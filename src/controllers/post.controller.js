@@ -19,19 +19,34 @@ class PostController {
     }
 
     async addPost(req, res) {
-        const {origin, destiny, hours, minutes, contact, car_id, marker_origin_lat, marker_origin_lng, marker_destiny_lat, marker_destiny_lng} = req.body
+        const {origin, destiny, description, contact, car_id, marker_origin_lat, marker_origin_lng, marker_destiny_lat, marker_destiny_lng} = req.body
+
+        console.log(req.body)
 
         const user_id = res.locals.user_id
 
-        const departure_time = hours + 'h' + minutes
+        //const departure_time = hours + 'h' + minutes
+
+        //let days = []
+
+        /*
+        for (let i = 1; i <= 7; i++) {
+            if (req.body[i])
+                days.push(true)
+            else
+                days.push(false)
+        }
+        */
+
+        //console.log(days)
 
         await PostModel.addPost({
             user_author_id: user_id,
             origin,
             destiny,
-            departure_time,
             contact,
             car_id,
+            description,
             marker_origin_lat,
             marker_origin_lng,
             marker_destiny_lat,
