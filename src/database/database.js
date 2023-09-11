@@ -2,7 +2,8 @@ import { Sequelize, DataTypes } from "sequelize"
 
 class Database {
     constructor() {
-        this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
+        //this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
+        this.connection = new Sequelize(process.env.POSTGRES_SQL)
         this.models = {}
         this.createTables()
     }
