@@ -57,7 +57,7 @@ class PostController {
     }
 
     async updatePost(req, res) {
-        const { origin, destiny, hours, minutes, contact, car_id, post_id } = req.body
+        const { origin, destiny, contact, car_id, post_id, description } = req.body
         const { user_id } = res.locals
 
         const result = await PostModel.updatePost({
@@ -66,9 +66,9 @@ class PostController {
             data: {
                 origin,
                 destiny,
-                departure_time: hours + 'h' + minutes,
                 contact,
-                car_id
+                car_id,
+                description
             }
         })
 

@@ -68,14 +68,14 @@
                     <div class="card mb-3 p-3 border col-lg-6 col-md-8 col-10 p-3 shadow">
                         <form id="<%= posts[i].post_id %>" class="form-post">
                             <input value="<%= posts[i].post_id %>" type="number" name="post_id" hidden>
-                            <div class="info">
+                            <div class="info mb-3">
                                 <p class="card-text">Nome: <%= user.name %></p>
                                 <p class="card-text">Nº da matrícula: <%= user.n_matricula %> </p>
                                 <p class="card-text">Origem: <%= posts[i].origin %> </p>
                                 <p class="card-text">Destino: <%= posts[i].destiny %> </p>
-                                <p class="card-text">Horário de saída: <%= posts[i].departure_time %> </p>
                                 <p class="card-text">Contato: <%= posts[i].contact %> </p>
                                 <p class="card-text">Placa do carro: <%= posts[i].car_id %> </p>
+                                <p class="card-text">Descrição: <%= posts[i].description %> </p>
                             </div>
                             <div class="mb-3">
                                 <button class="updatePostButton btn btn-info w-100" type="button" data-toggle="modal" data-target="#update-modal">Editar postagem</button>
@@ -129,23 +129,16 @@
                         <input class="update-input form-control" type="text" name="destiny" placeholder="Rua de exemplo, 2">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="departure_time">Hora de saída</label>
-                        <div class="row">
-                            <div class="col">
-                                <input min="00" max="23" class="update-input form-control" placeholder="Horas" type="number" name="hours">
-                            </div>
-                            <div class="col">
-                                <input min="00" max="59" class="update-input form-control" placeholder="Minutos" type="number" name="minutes">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="mb-3" for="contact">Contato</label>
+                        <label class="mb-3 form-label" for="contact">Contato</label>
                         <input class="update-input form-control" type="tel" name="contact" placeholder="(XX) XXXXX-XXXX">
                     </div>
                     <div class="mb-3">
-                        <label class="mb-3" for="car_id">Placa do carro</label>
+                        <label class="mb-3 form-label" for="car_id">Placa do carro</label>
                         <input class="update-input form-control" type="text" name="car_id" placeholder="ABC1234">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Detalhes</label>
+                        <textarea name="description" class="form-control" rows="8" placeholder="Descreva aqui os dias da semana, horários e pontos de encontro..."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

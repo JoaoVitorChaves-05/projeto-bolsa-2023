@@ -32,7 +32,14 @@
     </header>
     <main class="container-fluid p-3">
         <h2 class="text-center">Quem é você?</h2>
-        <p class="text-center" id="subtitle">Efetue o login abaixo para que possa fazer uma postagem</p>
+        <p class="text-center" id="subtitle">Efetue o login abaixo para que possa fazer uma postagem</p> 
+        <% if (message) { %>
+            <div class="row justify-content-center">
+                <div class="alert alert-danger alert-dismissible fade show col-lg-4 col-md-8 col-10 p-3" role="alert">
+                    <%= message %>
+                </div>
+            </div>
+       <% } %>
         <div class="row justify-content-center">
             <form class="col-lg-4 col-md-8 col-10 p-3 border shadow-lg" action="/login" method="post">
                 <div class="mb-3">

@@ -44,7 +44,7 @@ class AuthController {
         if (res.locals.auth) {
             const result_user = await database.models.Users.findOne({ where: { user_id: user_id } })
             const result_posts = await database.models.Posts.findAll({
-                attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'departure_time', 'contact', 'car_id', 'createdAt', 'updatedAt'], 
+                attributes: ['post_id', 'user_author_id', 'origin', 'destiny', 'description', 'contact', 'car_id', 'createdAt', 'updatedAt'], 
                 where: { user_author_id: user_id } 
             })
     
