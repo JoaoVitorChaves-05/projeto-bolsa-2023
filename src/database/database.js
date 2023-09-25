@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "../../node_modules/sequelize/lib/index.mjs"
 
+
 class Database {
     constructor() {
         this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
