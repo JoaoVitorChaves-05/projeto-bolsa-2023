@@ -1,9 +1,9 @@
-import { Sequelize, DataTypes } from "sequelize"
+import { Sequelize, DataTypes } from "../../node_modules/sequelize/lib/index.mjs"
 
 class Database {
     constructor() {
-        //this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
-        this.connection = new Sequelize(process.env.POSTGRES_SQL)
+        this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
+        //this.connection = new Sequelize(process.env.POSTGRES_SQL)
         this.models = {}
         this.createTables()
     }
