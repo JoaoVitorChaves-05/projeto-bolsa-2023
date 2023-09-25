@@ -3,7 +3,7 @@ import { Sequelize, DataTypes } from "../../node_modules/sequelize/lib/index.mjs
 class Database {
     constructor() {
         //this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
-        this.connection = new Sequelize(process.env.POSTGRES_SQL)
+        this.connection = new Sequelize('postgres://default:fe76rTugysEI@ep-long-flower-969268.us-east-1.postgres.vercel-storage.com:5432/verceldb')
         this.models = {}
         this.createTables()
     }
