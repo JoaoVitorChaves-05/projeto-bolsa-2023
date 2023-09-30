@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize/lib/index';
+import { Sequelize } from 'sequelize/lib/index';
 import pg from 'pg';
 
 
@@ -34,24 +34,24 @@ class Database {
 
         this.models.Users = this.connection.define('Users', {
             user_id: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
             name: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             n_matricula: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             password_hash: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             email: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             }
         })
@@ -60,12 +60,12 @@ class Database {
 
         this.models.Posts = this.connection.define('Posts', {
             post_id: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
             },
             user_author_id: {
-                type: DataTypes.INTEGER,
+                type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
                     model: this.models.Users,
@@ -73,39 +73,39 @@ class Database {
                 }
             },
             origin: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             destiny: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             contact: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             car_id: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             marker_origin_lat: {
-                type: DataTypes.FLOAT,
+                type: Sequelize.FLOAT,
                 allowNull: false
             },
             marker_origin_lng: {
-                type: DataTypes.FLOAT,
+                type: Sequelize.FLOAT,
                 allowNull: false
             },
             marker_destiny_lat: {
-                type: DataTypes.FLOAT,
+                type: Sequelize.FLOAT,
                 allowNull: false
             },
             marker_destiny_lng: {
-                type: DataTypes.FLOAT,
+                type: Sequelize.FLOAT,
                 allowNull: false
             },
             description: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             }
         })
