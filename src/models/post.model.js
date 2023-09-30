@@ -7,9 +7,6 @@ class PostModel {
     async getPosts() {
         const {Posts, Users} = database.models
         
-        console.log(typeof Posts)
-        console.log(typeof Users)
-
         Users.hasMany(Posts)
         Posts.belongsTo(Users, { foreignKey: 'user_author_id' })
 
