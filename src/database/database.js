@@ -4,8 +4,8 @@ import pg from 'pg';
 
 class Database {
     constructor() {
-        //this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
-        this.connection = new Sequelize(process.env.POSTGRES_DATABASE, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
+        this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
+        /*this.connection = new Sequelize(process.env.POSTGRES_DATABASE, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
             dialectModule: pg,
             dialect: 'postgres',
             host: process.env.POSTGRES_HOST,
@@ -13,7 +13,7 @@ class Database {
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DATABASE
-        })
+        })*/
         this.models = {}
         this.createTables()
     }
