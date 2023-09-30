@@ -12,5 +12,5 @@
             "dest": "index.js"
         }
     ],
-    "installCommand": "npm install"
+    "installCommand": "npm install && npm install ejs"
 }

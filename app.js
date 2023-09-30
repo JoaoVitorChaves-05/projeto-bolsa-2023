@@ -2,6 +2,7 @@ import express from 'express'
 import session from 'express-session'
 import methodOverride from 'method-override'
 import dotenv from 'dotenv'
+import path from 'path'
 
 dotenv.config()
 
@@ -17,7 +18,7 @@ class App {
         this.routes()
         this.app.use(express.static('./public'))
         this.app.set('view engine', 'ejs')
-        this.app.set('views', './src/views')
+        this.app.set('views', path.join(__dirname, 'src', 'views'))
     }
 
     middleware() {
