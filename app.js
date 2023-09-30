@@ -16,7 +16,7 @@ class App {
         this.app = express()
         this.middleware()
         this.routes()
-        this.app.use(express.static('./public'))
+        this.app.use(express.static('public'))
         this.app.set('view engine', 'ejs')
         this.app.set('views', path.relative('./src', '/views'))
     }
