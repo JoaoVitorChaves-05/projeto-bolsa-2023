@@ -18,7 +18,7 @@ class App {
         this.routes()
         this.app.use(express.static('./public'))
         this.app.set('view engine', 'ejs')
-        this.app.set('views', path.join(__dirname, 'src', 'views'))
+        this.app.set('views', path.relative('./src', '/views'))
     }
 
     middleware() {
