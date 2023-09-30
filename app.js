@@ -2,6 +2,7 @@ import express from 'express'
 import session from 'express-session'
 import methodOverride from 'method-override'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 import home from './src/routes/home.routes.js'
