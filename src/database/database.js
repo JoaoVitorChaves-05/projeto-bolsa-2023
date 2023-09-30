@@ -7,7 +7,8 @@ class Database {
         //this.connection = new Sequelize('mysql://root:root@localhost:3306/service_car')
         this.connection = new Sequelize(process.env.POSTGRES_DATABASE, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
             dialectModule: pg,
-            dialect: 'postgres'
+            dialect: 'postgres',
+            host: process.env.POSTGRES_HOST,
         })
         this.models = {}
         this.createTables()
