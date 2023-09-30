@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize/lib/index.js';
 import pg from 'pg';
 
 
